@@ -1,14 +1,13 @@
-// fetch('https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=Danny%20Welbeck').then(res=>res.json()).then(data=>console.log(data.player[0]));
 
 const serachBtn = ()=>{
+    document.getElementById("spinner").style.display = 'block';
     const serachField=document.getElementById("search-field");
     // console.log(serachField.value);
     const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${serachField.value}`;
     fetch(url).then(res=>res.json()).then(data=>displayPlayer(data.player));
 
-
-
     serachField.value='';
+    document.getElementById("spinner").style.display = 'none';
 }
 
 const displayPlayer = (data)=>{
@@ -53,7 +52,7 @@ const deleteInfo = (e)=>{
 }
 
 const details = (info)=>{
-  console.log(info);
+  // console.log(info);
   const url = `https://www.thesportsdb.com/api/v1/json/2/lookupplayer.php?id=${info}`;
   fetch(url).then(res=>res.json()).then(data=>displayInfo(data.players[0]));
 }
