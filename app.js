@@ -13,6 +13,7 @@ const serachBtn = ()=>{
 const displayPlayer = (data)=>{
     // console.log(data);
     const parentDiv = document.getElementById('parent');
+    parentDiv.innerHTML='';
     for (const player of data) {
         const div = document.createElement('div');
         div.innerHTML = `
@@ -60,6 +61,7 @@ const details = (info)=>{
 const displayInfo = player=>{
   // console.log(player);
   const detailsParent = document.getElementById("player-detail");
+  detailsParent.innerHTML='';
   const div = document.createElement('div');
   div.innerHTML = `
   <div class="card m-5" style="width: 18rem">
