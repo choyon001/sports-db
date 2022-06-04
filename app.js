@@ -3,8 +3,15 @@ const serachBtn = ()=>{
     document.getElementById("spinner").style.display = 'block';
     const serachField=document.getElementById("search-field");
     // console.log(serachField.value);
-    const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${serachField.value}`;
+    if(serachField.value == null || serachField.value ==''){
+      alert('your search field is empty');
+    }
+    else{
+      const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${serachField.value}`;
+
     fetch(url).then(res=>res.json()).then(data=>displayPlayer(data.player));
+    }
+    
 
     serachField.value='';
     document.getElementById("spinner").style.display = 'none';
@@ -12,7 +19,11 @@ const serachBtn = ()=>{
 
 const displayPlayer = (data)=>{
     // console.log(data);
-    const parentDiv = document.getElementById('parent');
+    if(data==null){
+      alert('sorry!Your player is not in our list');
+    }
+    else{
+      const parentDiv = document.getElementById('parent');
     parentDiv.innerHTML='';
     for (const player of data) {
         const div = document.createElement('div');
@@ -45,6 +56,7 @@ const displayPlayer = (data)=>{
         `;
         parentDiv.appendChild(div);
 
+    }
     }
 }
 // delete button details
